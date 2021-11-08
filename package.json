@@ -1,5 +1,5 @@
 {
-  "name": "bedrock-module-template-http",
+  "name": "bedrock-service-object",
   "version": "0.0.1-0",
   "description": "Bedrock HTTP API",
   "main": "./lib",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http"
+    "url": "https://github.com/digitalbazaar/bedrock-service-object"
   },
   "keywords": [
     "bedrock"
@@ -19,15 +19,15 @@
     "url": "https://digitalbazaar.com"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-module-template-http/issues"
+    "url": "https://github.com/digitalbazaar/bedrock-service-object/issues"
   },
-  "homepage": "https://github.com/digitalbazaar/bedrock-module-template-http",
+  "homepage": "https://github.com/digitalbazaar/bedrock-service-object",
   "dependencies": {
     "esm": "^3.2.25"
   },
   "peerDependencies": {
     "bedrock": "^4.1.1",
-    "bedrock-express": "^3.2.0"
+    "bedrock-express": "^4.0.0"
   },
   "directories": {
     "lib": "./lib"
