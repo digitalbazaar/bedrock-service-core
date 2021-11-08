@@ -1,5 +1,5 @@
 {
-  "name": "bedrock-module-template-http-test",
+  "name": "bedrock-service-object-test",
   "version": "0.0.1-0",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "bedrock": "^4.1.1",
     "bedrock-express": "^3.2.0",
     "bedrock-https-agent": "^2.0.0",
-    "bedrock-module-template-http": "file:..",
+    "bedrock-service-object": "file:..",
     "bedrock-mongodb": "^8.2.0",
     "bedrock-server": "^2.7.0",
     "bedrock-test": "^5.3.2",
@@ -22,10 +22,10 @@
   "nyc": {
     "excludeNodeModules": false,
     "include": [
-      "node_modules/bedrock-module-template-http/**"
+      "node_modules/bedrock-service-object/**"
     ],
     "exclude": [
-      "node_modules/bedrock-module-template-http/node_modules/**"
+      "node_modules/bedrock-service-object/node_modules/**"
     ]
   }
 }
