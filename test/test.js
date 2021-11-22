@@ -4,9 +4,13 @@
 'use strict';
 
 const bedrock = require('bedrock');
+require('bedrock-express');
 require('bedrock-https-agent');
 require('bedrock-mongodb');
-require('bedrock-module-template-http');
+const {createService} = require('bedrock-service-object');
 
 require('bedrock-test');
+
+// FIXME: call `createService`
+
 bedrock.start();
