@@ -11,6 +11,9 @@ const {createService} = require('bedrock-service-object');
 
 require('bedrock-test');
 
-// FIXME: call `createService`
+bedrock.on('bedrock.init', async () => {
+  // FIXME: call `createService`
+  //await createService({});
+});
 
 bedrock.start();
