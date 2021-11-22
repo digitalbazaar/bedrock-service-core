@@ -12,7 +12,7 @@ const mockData = require('./mock.data');
 
 describe('bedrock-service-object HTTP API', () => {
   describe('instances', () => {
-    it('creates an instance', async () => {
+    it.only('creates an instance', async () => {
       const secret = 'b07e6b31-d910-438e-9a5f-08d945a5f676';
       const handle = 'testKey1';
       const capabilityAgent = await CapabilityAgent.fromSecret(
