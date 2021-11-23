@@ -27,7 +27,8 @@
   },
   "peerDependencies": {
     "bedrock": "^4.1.1",
-    "bedrock-express": "^4.0.0"
+    "bedrock-express": "^4.0.0",
+    "bedrock-zcap-storage": "^4.0.0"
   },
   "directories": {
     "lib": "./lib"
