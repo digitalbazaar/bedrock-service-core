@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-service-object",
   "dependencies": {
+    "bnid": "^2.1.0",
     "esm": "^3.2.25"
   },
   "peerDependencies": {
