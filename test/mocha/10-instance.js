@@ -5,7 +5,7 @@
 
 const bedrock = require('bedrock');
 const {CapabilityAgent} = require('@digitalbazaar/webkms-client');
-const helpers = require('./helpers');
+//const helpers = require('./helpers');
 const {agent} = require('bedrock-https-agent');
 const {httpClient} = require('@digitalbazaar/http-client');
 const mockData = require('./mock.data');
