@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
@@ -10,7 +10,7 @@ const {agent} = require('bedrock-https-agent');
 const {httpClient} = require('@digitalbazaar/http-client');
 const mockData = require('./mock.data');
 
-describe('bedrock-service-object HTTP API', () => {
+describe('bedrock-service-core HTTP API', () => {
   describe('instances', () => {
     it.only('creates an instance', async () => {
       const secret = 'b07e6b31-d910-438e-9a5f-08d945a5f676';

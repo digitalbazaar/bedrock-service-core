@@ -1,1 +1,2 @@
-# bedrock-service-object
+# bedrock-service-core
+

@@ -1,5 +1,5 @@
 {
-  "name": "bedrock-service-object",
+  "name": "bedrock-service-core",
   "version": "0.0.1-0",
   "description": "Bedrock HTTP API",
   "main": "./lib",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-service-object"
+    "url": "https://github.com/digitalbazaar/bedrock-service-core"
   },
   "keywords": [
     "bedrock"
@@ -19,17 +19,17 @@
     "url": "https://digitalbazaar.com"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-service-object/issues"
+    "url": "https://github.com/digitalbazaar/bedrock-service-core/issues"
   },
-  "homepage": "https://github.com/digitalbazaar/bedrock-service-object",
+  "homepage": "https://github.com/digitalbazaar/bedrock-service-core",
   "dependencies": {
     "bnid": "^2.1.0",
     "esm": "^3.2.25"
   },
   "peerDependencies": {
-    "bedrock": "^4.1.1",
-    "bedrock-express": "^4.0.0",
-    "bedrock-zcap-storage": "^4.0.0"
+    "bedrock": "^4.4.3",
+    "bedrock-express": "^6.2.2",
+    "bedrock-zcap-storage": "^5.0.0"
   },
   "directories": {
     "lib": "./lib"
