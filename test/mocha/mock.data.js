@@ -18,7 +18,7 @@ data.productIdMap = new Map([
 data.baseUrl = config.server.baseUri;
 
 data.config = {
-  id: `${data.baseUrl}/edvs/z19uMCiPNET4YbcPpBcab5mEE`,
+  id: `${data.baseUrl}/examples/z19uMCiPNET4YbcPpBcab5mEE`,
   controller: 'did:key:z6MkjWReoR2tgke37PpaP8BCCD3yb1LwXFmga4sGo9Z4Saij',
   sequence: 0,
   meterId: 'https://localhost:18443/meters/zLd2ijgM1PoJvvULK9Wwx37'
