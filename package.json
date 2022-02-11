@@ -38,7 +38,7 @@
   "peerDependencies": {
     "bedrock": "^4.4.3",
     "bedrock-did-context": "^2.0.3",
-    "bedrock-did-io": "^5.0.0",
+    "bedrock-did-io": "^6.0.2",
     "bedrock-express": "^6.2.2",
     "bedrock-mongodb": "^8.4.0",
     "bedrock-security-context": "^5.0.0",
