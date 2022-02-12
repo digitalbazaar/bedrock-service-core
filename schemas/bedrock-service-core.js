@@ -1,9 +1,38 @@
 /*!
  * Copyright (c) 2018-2022 Digital Bazaar, Inc. All rights reserved.
  */
+import cidrRegex from 'cidr-regex';
+
 const controller = {
   title: 'controller',
   type: 'string'
+};
+
+const id = {
+  title: 'id',
+  type: 'string'
+};
+
+const ipAllowList = {
+  type: 'array',
+  minItems: 1,
+  items: {
+    type: 'string',
+    // leading and trailing slashes in regex must be removed
+    pattern: cidrRegex.v4({exact: true}).toString().slice(1, -1),
+  }
+};
+
+const meterId = {
+  title: 'Meter ID',
+  type: 'string'
+};
+
+const sequence = {
+  title: 'sequence',
+  type: 'integer',
+  minimum: 0,
+  maximum: Number.MAX_SAFE_INTEGER - 1
 };
 
 export const config = {
@@ -12,22 +41,27 @@ export const config = {
   required: ['controller', 'sequence', 'meterId'],
   additionalProperties: true,
   properties: {
-    id: {
-      type: 'string'
-    },
-    controller: {
-      type: 'string'
-    },
-    sequence: {
-      type: 'integer',
-      minimum: 0
-    },
-    meterId: {
-      type: 'string'
-    }
+    controller,
+    ipAllowList,
+    meterId,
+    sequence
   }
 };
-export const postConfigBody = config;
+export const createConfigBody = config;
+
+export const updateConfigBody = {
+  title: 'updateConfigBody',
+  type: 'object',
+  additionalProperties: false,
+  required: ['controller', 'id', 'sequence'],
+  properties: {
+    controller,
+    id,
+    ipAllowList,
+    meterId,
+    sequence
+  }
+};
 
 export const getConfigsQuery = {
   title: 'Service Object Configuration Query',
@@ -35,9 +69,7 @@ export const getConfigsQuery = {
   required: ['controller'],
   additionalProperties: false,
   properties: {
-    controller: {
-      type: 'string'
-    }
+    controller
   }
 };
 
@@ -51,10 +83,7 @@ export const delegatedZcap = {
   ],
   properties: {
     controller,
-    id: {
-      title: 'id',
-      type: 'string'
-    },
+    id,
     allowedAction: {
       anyOf: [{
         type: 'string'
