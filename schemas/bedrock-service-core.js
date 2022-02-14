@@ -38,8 +38,8 @@ const sequence = {
 export const config = {
   title: 'Service Object Configuration',
   type: 'object',
-  required: ['controller', 'sequence', 'meterId'],
-  additionalProperties: true,
+  required: ['controller', 'meterId', 'sequence'],
+  additionalProperties: false,
   properties: {
     controller,
     ipAllowList,
@@ -53,7 +53,7 @@ export const updateConfigBody = {
   title: 'updateConfigBody',
   type: 'object',
   additionalProperties: false,
-  required: ['controller', 'id', 'sequence'],
+  required: ['controller', 'id', 'meterId', 'sequence'],
   properties: {
     controller,
     id,
@@ -74,7 +74,7 @@ export const getConfigsQuery = {
 };
 
 export const delegatedZcap = {
-  title: 'delegatedZcap',
+  title: 'Delegated ZCAP',
   type: 'object',
   additionalProperties: false,
   required: [
@@ -158,3 +158,12 @@ export const delegatedZcap = {
   }
 };
 export const postRevocationBody = {...delegatedZcap};
+
+export const zcaps = {
+  title: 'ZCAPs',
+  type: 'object',
+  required: [],
+  additionalProperties: false,
+  // to be extended in `createService`
+  properties: {}
+};
