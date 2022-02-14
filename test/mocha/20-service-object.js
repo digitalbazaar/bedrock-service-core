@@ -3,6 +3,7 @@
  */
 'use strict';
 
+/*
 const bedrock = require('bedrock');
 const {CapabilityAgent} = require('@digitalbazaar/webkms-client');
 //const helpers = require('./helpers');
@@ -11,7 +12,7 @@ const {httpClient} = require('@digitalbazaar/http-client');
 const mockData = require('./mock.data');
 
 describe.skip('bedrock-service-core HTTP API', () => {
-  describe('instances', () => {
+  describe('service objects', () => {
     it('creates an instance', async () => {
       const secret = 'b07e6b31-d910-438e-9a5f-08d945a5f676';
       const handle = 'testKey1';
@@ -570,3 +571,4 @@ describe.skip('bedrock-service-core HTTP API', () => {
     }); // end update instance config
   });
 });
+*/
