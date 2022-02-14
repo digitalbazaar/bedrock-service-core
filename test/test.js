@@ -11,7 +11,7 @@ require('bedrock-meter-usage-reporter');
 const {handlers} = require('bedrock-meter-http');
 require('bedrock-server');
 require('bedrock-test');
-//const {createService} = require('bedrock-service-core');
+const {createService} = require('bedrock-service-core');
 
 const mockData = require('./mocha/mock.data');
 
@@ -35,8 +35,15 @@ bedrock.events.on('bedrock.init', async () => {
   handlers.setRemoveHandler({handler: ({meter} = {}) => ({meter})});
   handlers.setUseHandler({handler: ({meter} = {}) => ({meter})});
 
-  // FIXME: call `createService`
-  //await createService({});
+  // create `example` service
+  /*const service =*/await createService({
+    serviceType: 'example',
+    routePrefix: '/examples',
+    storageCost: {
+      config: 1,
+      revocation: 1
+    }
+  });
 });
 
 bedrock.start();
