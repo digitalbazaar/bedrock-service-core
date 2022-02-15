@@ -9,7 +9,7 @@ const helpers = require('./helpers');
 const {agent} = require('bedrock-https-agent');
 const {httpClient} = require('@digitalbazaar/http-client');
 
-describe.only('bedrock-service-core HTTP API', () => {
+describe('bedrock-service-core HTTP API', () => {
   describe('service objects', () => {
     let capabilityAgent;
     before(async () => {
