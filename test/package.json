@@ -9,6 +9,7 @@
     "coverage-report": "nyc report"
   },
   "dependencies": {
+    "@digitalbazaar/ezcap": "^2.0.2",
     "@digitalbazaar/http-client": "^2.0.1",
     "@digitalbazaar/webkms-client": "^9.2.0",
     "bedrock": "^4.4.3",
