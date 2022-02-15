@@ -47,7 +47,10 @@ export const config = {
     sequence
   }
 };
-export const createConfigBody = config;
+export const createConfigBody = {
+  ...config,
+  title: 'createConfigBody'
+};
 
 export const updateConfigBody = {
   title: 'updateConfigBody',
