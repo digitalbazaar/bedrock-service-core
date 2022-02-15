@@ -4,5 +4,5 @@
 'use strict';
 
 describe('api', () => {
-  it.only('should work', async () => {});
+  it('should work', async () => {});
 });
