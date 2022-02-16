@@ -1,7 +1,7 @@
 {
   "name": "bedrock-service-core",
   "version": "0.0.1-0",
-  "description": "Bedrock HTTP API",
+  "description": "Bedrock Service Core",
   "main": "./lib",
   "scripts": {
     "lint": "eslint ."
