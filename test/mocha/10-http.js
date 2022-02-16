@@ -55,7 +55,7 @@ describe('bedrock-service-core HTTP API', () => {
         result.controller.should.equal(capabilityAgentId);
         result.ipAllowList.should.eql(ipAllowList);
       });
-      it('returns error on invalid ipAllowList', async () => {
+      it('throws error on invalid ipAllowList', async () => {
         // this is not a valid CIDR
         const ipAllowList = ['127.0.0.1/33'];
 
@@ -74,7 +74,7 @@ describe('bedrock-service-core HTTP API', () => {
         error.message.should.contain('should match pattern');
         error.details.path.should.equal('.ipAllowList[0]');
       });
-      it('returns error on invalid ipAllowList', async () => {
+      it('throws error on invalid ipAllowList', async () => {
         // an empty allow list is invalid
         const ipAllowList = [];
 
