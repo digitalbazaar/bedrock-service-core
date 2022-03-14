@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 3.1.0 - 2022-03-TBD
+## 3.1.0 - 2022-03-14
 
 ### Added
 - Add missing peer dependencies `bedrock-jsonld-document-loader@1.22`,
