@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 3.1.0 - 2022-03-TBD
+
+### Added
+- Add missing peer dependencies `bedrock-jsonld-document-loader@1.22`,
+  `bedrock-meter-usage-reporter@5.1` and `bedrock-veres-one-context@12.0`.
+- Add missing dependency `@digitalbazaar/ed25519-signature-2020` in test.
+
 ## 3.0.0 - 2022-03-11
 
 ### Added
