@@ -46,7 +46,7 @@
     "bedrock-mongodb": "^8.4.0",
     "bedrock-security-context": "^5.0.0",
     "bedrock-validation": "^5.5.0",
-    "bedrock-veres-one-context": "12.0.0",
+    "bedrock-veres-one-context": "^12.0.0",
     "bedrock-zcap-storage": "^5.0.0"
   },
   "directories": {
