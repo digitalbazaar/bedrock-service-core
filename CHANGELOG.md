@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 3.1.1 - 2022-03-xx
+## 3.1.1 - 2022-03-28
 
 ### Fixed
 - Fix peer dependency specification (missing `^`) of
