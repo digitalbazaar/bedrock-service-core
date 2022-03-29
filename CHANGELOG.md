@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 3.1.1 - 2022-03-xx
+
+### Fixed
+- Fix peer dependency specification (missing `^`) of
+  `bedrock-veres-one-context@12`.
+
 ## 3.1.0 - 2022-03-14
 
 ### Added
