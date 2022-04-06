@@ -1,17 +1,16 @@
 /*
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const bedrock = require('bedrock');
+import * as bedrock from '@bedrock/core';
+import {createRequire} from 'module';
+import {getAppIdentity} from '@bedrock/app-identity';
+import {httpsAgent} from '@bedrock/https-agent';
+import {mockData} from './mock.data.js';
+const require = createRequire(import.meta.url);
 const {Ed25519Signature2020} = require('@digitalbazaar/ed25519-signature-2020');
-const {getAppIdentity} = require('bedrock-app-identity');
-const {httpsAgent} = require('bedrock-https-agent');
 const {ZcapClient} = require('@digitalbazaar/ezcap');
 
-const mockData = require('./mock.data');
-
-exports.createMeter = async ({capabilityAgent} = {}) => {
+export async function createMeter({capabilityAgent} = {}) {
   // create signer using the application's capability invocation key
   const {keys: {capabilityInvocationKey}} = getAppIdentity();
 
@@ -35,11 +34,11 @@ exports.createMeter = async ({capabilityAgent} = {}) => {
   // return full meter ID
   const {id} = meter;
   return {id: `${meterService}/${id}`};
-};
+}
 
-exports.createConfig = async ({
+export async function createConfig({
   capabilityAgent, ipAllowList, meterId
-} = {}) => {
+} = {}) {
   if(!meterId) {
     // create a meter for the keystore
     ({id: meterId} = await exports.createMeter({capabilityAgent}));
@@ -59,17 +58,17 @@ exports.createConfig = async ({
   const url = `${mockData.baseUrl}/examples`;
   const response = await zcapClient.write({url, json: config});
   return response.data;
-};
+}
 
-exports.getConfig = async ({id, capabilityAgent}) => {
+export async function getConfig({id, capabilityAgent}) {
   const zcapClient = exports.createZcapClient({capabilityAgent});
   const {data} = await zcapClient.read({url: id});
   return data;
-};
+}
 
-exports.createZcapClient = ({
+export function createZcapClient({
   capabilityAgent, delegationSigner, invocationSigner
-}) => {
+}) {
   const signer = capabilityAgent && capabilityAgent.getSigner();
   return new ZcapClient({
     agent: httpsAgent,
@@ -77,25 +76,25 @@ exports.createZcapClient = ({
     delegationSigner: delegationSigner || signer,
     SuiteClass: Ed25519Signature2020
   });
-};
+}
 
-exports.delegate = async ({
+export async function delegate({
   capability, controller, invocationTarget, expires, allowedActions,
   delegator
-}) => {
+}) {
   const zcapClient = exports.createZcapClient({capabilityAgent: delegator});
   expires = expires || (capability && capability.expires) ||
     new Date(Date.now() + 5000).toISOString().slice(0, -5) + 'Z';
   return zcapClient.delegate({
     capability, controller, expires, invocationTarget, allowedActions
   });
-};
+}
 
-exports.revokeDelegatedCapability = async ({
+export async function revokeDelegatedCapability({
   serviceObjectId, capabilityToRevoke, invocationSigner
-}) => {
+}) {
   const url = `${serviceObjectId}/zcaps/revocations/` +
     encodeURIComponent(capabilityToRevoke.id);
   const zcapClient = exports.createZcapClient({invocationSigner});
   return zcapClient.write({url, json: capabilityToRevoke});
-};
+}

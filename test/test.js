@@ -1,19 +1,15 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const bedrock = require('bedrock');
-const {getServiceIdentities} = require('bedrock-app-identity');
-require('bedrock-https-agent');
-require('bedrock-meter');
-require('bedrock-meter-usage-reporter');
-const {handlers} = require('bedrock-meter-http');
-require('bedrock-server');
-require('bedrock-test');
-const {createService} = require('bedrock-service-core');
-
-const mockData = require('./mocha/mock.data');
+import * as bedrock from '@bedrock/core';
+import {getServiceIdentities} from '@bedrock/app-identity';
+import '@bedrock/https-agent';
+import '@bedrock/meter';
+import '@bedrock/meter-usage-reporter';
+import {handlers} from '@bedrock/meter-usage-reporter';
+import '@bedrock/server';
+import {createService} from '@bedrock/service-core'
+import {mockData} from './mocha/mock.data.js';
 
 bedrock.events.on('bedrock.init', async () => {
   /* Handlers need to be added before `bedrock.start` is called. These are
@@ -46,4 +42,5 @@ bedrock.events.on('bedrock.init', async () => {
   });
 });
 
+import '@bedrock/test';
 bedrock.start();
