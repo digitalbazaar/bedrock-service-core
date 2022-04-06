@@ -2,13 +2,13 @@
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
+import {createService} from '@bedrock/service-core';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import '@bedrock/https-agent';
 import '@bedrock/meter';
 import '@bedrock/meter-usage-reporter';
-import {handlers} from '@bedrock/meter-usage-reporter';
+import {handlers} from '@bedrock/meter-http';
 import '@bedrock/server';
-import {createService} from '@bedrock/service-core';
 import {mockData} from './mocha/mock.data.js';
 
 bedrock.events.on('bedrock.init', async () => {

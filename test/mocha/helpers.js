@@ -41,7 +41,7 @@ export async function createConfig({
 } = {}) {
   if(!meterId) {
     // create a meter for the keystore
-    ({id: meterId} = await exports.createMeter({capabilityAgent}));
+    ({id: meterId} = await createMeter({capabilityAgent}));
   }
 
   // create service object
@@ -54,14 +54,14 @@ export async function createConfig({
     config.ipAllowList = ipAllowList;
   }
 
-  const zcapClient = exports.createZcapClient({capabilityAgent});
+  const zcapClient = createZcapClient({capabilityAgent});
   const url = `${mockData.baseUrl}/examples`;
   const response = await zcapClient.write({url, json: config});
   return response.data;
 }
 
 export async function getConfig({id, capabilityAgent}) {
-  const zcapClient = exports.createZcapClient({capabilityAgent});
+  const zcapClient = createZcapClient({capabilityAgent});
   const {data} = await zcapClient.read({url: id});
   return data;
 }
@@ -82,7 +82,7 @@ export async function delegate({
   capability, controller, invocationTarget, expires, allowedActions,
   delegator
 }) {
-  const zcapClient = exports.createZcapClient({capabilityAgent: delegator});
+  const zcapClient = createZcapClient({capabilityAgent: delegator});
   expires = expires || (capability && capability.expires) ||
     new Date(Date.now() + 5000).toISOString().slice(0, -5) + 'Z';
   return zcapClient.delegate({
@@ -95,6 +95,6 @@ export async function revokeDelegatedCapability({
 }) {
   const url = `${serviceObjectId}/zcaps/revocations/` +
     encodeURIComponent(capabilityToRevoke.id);
-  const zcapClient = exports.createZcapClient({invocationSigner});
+  const zcapClient = createZcapClient({invocationSigner});
   return zcapClient.write({url, json: capabilityToRevoke});
 }
