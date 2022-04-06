@@ -1,17 +1,20 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import {config} from '@bedrock/core';
+import {fileURLToPath} from 'url';
+import path from 'path';
+import '@bedrock/app-identity';
+import '@bedrock/https-agent';
 
-const {config} = require('bedrock');
-const path = require('path');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+config.mocha.tests.push(path.join(__dirname, 'mocha'));
 
 // MongoDB
 config.mongodb.name = 'bedrock_service_core_test';
 config.mongodb.dropCollections.onInit = true;
 config.mongodb.dropCollections.collections = [];
-
-config.mocha.tests.push(path.join(__dirname, 'mocha'));
 
 // allow self-signed certs in test framework
 config['https-agent'].rejectUnauthorized = false;

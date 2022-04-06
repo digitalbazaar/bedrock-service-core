@@ -1,8 +1,9 @@
 {
-  "name": "bedrock-service-core",
+  "name": "@bedrock/service-core",
   "version": "3.1.2-0",
+  "type": "module",
   "description": "Bedrock Service Core",
-  "main": "./lib",
+  "main": "./lib/index.js",
   "scripts": {
     "lint": "eslint ."
   },
@@ -32,22 +33,21 @@
     "cidr-regex": "^3.1.1",
     "cors": "^2.8.5",
     "crypto-ld": "^6.0.0",
-    "esm": "^3.2.25",
     "forwarded": "^0.2.0",
     "netmask": "^2.0.2"
   },
   "peerDependencies": {
-    "bedrock": "^4.4.3",
-    "bedrock-did-context": "^2.0.3",
-    "bedrock-did-io": "^6.0.2",
-    "bedrock-express": "^6.2.2",
-    "bedrock-jsonld-document-loader": "^1.2.2",
-    "bedrock-meter-usage-reporter": "5.1.0",
-    "bedrock-mongodb": "^8.4.0",
-    "bedrock-security-context": "^5.0.0",
-    "bedrock-validation": "^5.5.0",
-    "bedrock-veres-one-context": "^12.0.0",
-    "bedrock-zcap-storage": "^5.0.0"
+    "@bedrock/core": "^5.0.0",
+    "@bedrock/did-context": "^3.0.0",
+    "@bedrock/did-io": "^7.0.0",
+    "@bedrock/express": "^7.0.0",
+    "@bedrock/jsonld-document-loader": "^2.0.0",
+    "@bedrock/meter-usage-reporter": "6.0.0",
+    "@bedrock/mongodb": "^9.0.0",
+    "@bedrock/security-context": "^6.0.0",
+    "@bedrock/validation": "^6.0.0",
+    "@bedrock/veres-one-context": "^13.0.0",
+    "@bedrock/zcap-storage": "^6.0.0"
   },
   "directories": {
     "lib": "./lib"
@@ -57,9 +57,9 @@
     "eslint-config-digitalbazaar": "^2.8.0",
     "eslint-plugin-jsdoc": "^28.6.1",
     "jsdoc": "^3.6.4",
-    "jsdoc-to-markdown": "^6.0.1"
+    "jsdoc-to-markdown": "^7.1.1"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   }
 }
