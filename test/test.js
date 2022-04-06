@@ -8,7 +8,7 @@ import '@bedrock/meter';
 import '@bedrock/meter-usage-reporter';
 import {handlers} from '@bedrock/meter-usage-reporter';
 import '@bedrock/server';
-import {createService} from '@bedrock/service-core'
+import {createService} from '@bedrock/service-core';
 import {mockData} from './mocha/mock.data.js';
 
 bedrock.events.on('bedrock.init', async () => {
