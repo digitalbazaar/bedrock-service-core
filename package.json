@@ -4,6 +4,10 @@
   "type": "module",
   "description": "Bedrock Service Core",
   "main": "./lib/index.js",
+  "files": [
+    "lib/**/*.js",
+    "schemas/**/*.js"
+  ],
   "scripts": {
     "lint": "eslint ."
   },
