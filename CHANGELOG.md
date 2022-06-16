@@ -1,5 +1,10 @@
 # bedrock-service-core ChangeLog
 
+## 5.2.0 - 2022-xx-xx
+
+### Changed
+- Use `package.json` `files` field.
+
 ## 5.1.0 - 2022-05-13
 
 ### Added
