@@ -1,9 +1,16 @@
 # bedrock-service-core ChangeLog
 
-## 5.2.0 - 2022-xx-xx
+## 6.0.0 - 2022-xx-xx
 
 ### Changed
 - Use `package.json` `files` field.
+- Update dependencies.
+- **BREAKING**: Update peer dependencies:
+  - `@bedrock/did-io@9`
+  - `@bedrock/meter-usage-reporter@8`
+  - `@bedrock/zcap-storage@8`
+- **BREAKING**: Dependencies require Web Crypto API. Node.js 14 users need to
+  install an appropriate polyfill.
 
 ## 5.1.0 - 2022-05-13
 
