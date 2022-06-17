@@ -11,6 +11,7 @@
   - `@bedrock/zcap-storage@8`
 - **BREAKING**: Dependencies require Web Crypto API. Node.js 14 users need to
   install an appropriate polyfill.
+- Lint module.
 
 ## 5.1.0 - 2022-05-13
 
