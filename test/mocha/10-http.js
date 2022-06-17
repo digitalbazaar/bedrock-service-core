@@ -3,11 +3,9 @@
  */
 import * as bedrock from '@bedrock/core';
 import * as helpers from './helpers.js';
-import {createRequire} from 'node:module';
 import {agent} from '@bedrock/https-agent';
 import {httpClient} from '@digitalbazaar/http-client';
-const require = createRequire(import.meta.url);
-const {CapabilityAgent} = require('@digitalbazaar/webkms-client');
+import {CapabilityAgent} from '@digitalbazaar/webkms-client';
 
 describe('bedrock-service-core HTTP API', () => {
   describe('service objects', () => {
