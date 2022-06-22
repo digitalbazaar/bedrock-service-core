@@ -12,6 +12,10 @@
   - `@bedrock/zcap-storage@8`
 - Lint module.
 
+### Added
+- Support IPv6 CIDRs in `ipAllowList`.
+  - Switching from `netmask` to `ipaddr.js` to support IPv6.
+
 ## 5.1.0 - 2022-05-13
 
 ### Added
