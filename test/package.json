@@ -34,8 +34,7 @@
     "@digitalbazaar/http-client": "^3.2.0",
     "@digitalbazaar/webkms-client": "^11.0.0",
     "c8": "^7.11.3",
-    "cross-env": "^7.0.3",
-    "isomorphic-webcrypto": "^2.3.8"
+    "cross-env": "^7.0.3"
   },
   "c8": {
     "excludeNodeModules": false,

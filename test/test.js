@@ -1,8 +1,6 @@
 /*!
  * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
  */
-import './polyfills.js';
-
 import * as bedrock from '@bedrock/core';
 import {createService} from '@bedrock/service-core';
 import {getServiceIdentities} from '@bedrock/app-identity';
