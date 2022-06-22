@@ -38,8 +38,8 @@
     "cors": "^2.8.5",
     "crypto-ld": "^7.0.0",
     "forwarded": "^0.2.0",
-    "klona": "^2.0.5",
-    "netmask": "^2.0.2"
+    "ipaddr.js": "^2.0.1",
+    "klona": "^2.0.5"
   },
   "peerDependencies": {
     "@bedrock/core": "^6.0.1",
