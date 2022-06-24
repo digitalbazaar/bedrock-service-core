@@ -4,12 +4,12 @@
 import * as bedrock from '@bedrock/core';
 import {createService} from '@bedrock/service-core';
 import {getServiceIdentities} from '@bedrock/app-identity';
+import {handlers} from '@bedrock/meter-http';
+import {mockData} from './mocha/mock.data.js';
 import '@bedrock/https-agent';
 import '@bedrock/meter';
 import '@bedrock/meter-usage-reporter';
-import {handlers} from '@bedrock/meter-http';
 import '@bedrock/server';
-import {mockData} from './mocha/mock.data.js';
 
 bedrock.events.on('bedrock.init', async () => {
   /* Handlers need to be added before `bedrock.start` is called. These are
