@@ -3,10 +3,10 @@
  */
 import * as bedrock from '@bedrock/core';
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
-import {ZcapClient} from '@digitalbazaar/ezcap';
 import {getAppIdentity} from '@bedrock/app-identity';
 import {httpsAgent} from '@bedrock/https-agent';
 import {mockData} from './mock.data.js';
+import {ZcapClient} from '@digitalbazaar/ezcap';
 
 export async function createMeter({capabilityAgent} = {}) {
   // create signer using the application's capability invocation key

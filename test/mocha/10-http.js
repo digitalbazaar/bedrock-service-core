@@ -4,8 +4,8 @@
 import * as bedrock from '@bedrock/core';
 import * as helpers from './helpers.js';
 import {agent} from '@bedrock/https-agent';
-import {httpClient} from '@digitalbazaar/http-client';
 import {CapabilityAgent} from '@digitalbazaar/webkms-client';
+import {httpClient} from '@digitalbazaar/http-client';
 
 describe('bedrock-service-core HTTP API', () => {
   describe('service objects', () => {
