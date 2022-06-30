@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 6.0.0 - 2022-xx-xx
+## 6.0.0 - 2022-06-30
 
 ### Changed
 - **BREAKING**: Require Node.js >=16.
