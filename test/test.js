@@ -42,5 +42,14 @@ bedrock.events.on('bedrock.init', async () => {
   });
 });
 
+bedrock.events.on('bedrock-express.configure.routes', app => {
+  app.get(mockData.oauth2IssuerConfigRoute, (req, res) => {
+    res.send(mockData.openIdConfig);
+  });
+  app.get('/oauth2/jwks', (req, res) => {
+    res.send(mockData.jwks);
+  });
+});
+
 import '@bedrock/test';
 bedrock.start();
