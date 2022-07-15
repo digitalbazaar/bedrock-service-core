@@ -39,6 +39,7 @@
     "crypto-ld": "^7.0.0",
     "forwarded": "^0.2.0",
     "ipaddr.js": "^2.0.1",
+    "jose": "^4.8.3",
     "klona": "^2.0.5"
   },
   "peerDependencies": {
