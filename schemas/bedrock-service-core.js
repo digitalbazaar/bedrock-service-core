@@ -5,12 +5,14 @@ import cidrRegex from 'cidr-regex';
 
 const controller = {
   title: 'controller',
-  type: 'string'
+  type: 'string',
+  maxLength: 4096
 };
 
 const id = {
   title: 'id',
-  type: 'string'
+  type: 'string',
+  maxLength: 4096
 };
 
 const ipAllowList = {
@@ -25,7 +27,8 @@ const ipAllowList = {
 
 const meterId = {
   title: 'Meter ID',
-  type: 'string'
+  type: 'string',
+  maxLength: 4096
 };
 
 const sequence = {
@@ -41,6 +44,22 @@ export const config = {
   required: ['controller', 'meterId', 'sequence'],
   additionalProperties: false,
   properties: {
+    // config for optional zcap-alternative authorization methods
+    authorization: {
+      title: 'Additional Authorization Configuration',
+      type: 'object',
+      // only `oauth2` is supported at this time
+      required: ['oauth2'],
+      additionalProperties: false,
+      properties: {
+        // `oauth2` URL for authorization server metadata
+        issuerConfigUrl: {
+          title: 'Authorization Server Metadata URL',
+          type: 'string',
+          maxLength: 4096
+        }
+      }
+    },
     controller,
     ipAllowList,
     meterId,
