@@ -3,6 +3,32 @@
  */
 import cidrRegex from 'cidr-regex';
 
+// config for optional zcap-alternative authorization methods
+const authorization = {
+  title: 'Additional Authorization Configuration',
+  type: 'object',
+  // only `oauth2` is supported at this time
+  required: ['oauth2'],
+  additionalProperties: false,
+  properties: {
+    oauth2: {
+      title: 'OAuth2 Authorization Configuration',
+      type: 'object',
+      required: ['issuerConfigUrl'],
+      additionalProperties: false,
+      properties: {
+        // `oauth2` URL for authorization server metadata
+        issuerConfigUrl: {
+          title: 'Authorization Server Metadata URL',
+          type: 'string',
+          pattern: '\\/\\.well-known\\/([^\\/]+)',
+          maxLength: 4096
+        }
+      }
+    }
+  }
+};
+
 const controller = {
   title: 'controller',
   type: 'string',
@@ -45,30 +71,7 @@ export const config = {
   additionalProperties: false,
   properties: {
     // config for optional zcap-alternative authorization methods
-    authorization: {
-      title: 'Additional Authorization Configuration',
-      type: 'object',
-      // only `oauth2` is supported at this time
-      required: ['oauth2'],
-      additionalProperties: false,
-      properties: {
-        oauth2: {
-          title: 'OAuth2 Authorization Configuration',
-          type: 'object',
-          required: ['issuerConfigUrl'],
-          additionalProperties: false,
-          properties: {
-            // `oauth2` URL for authorization server metadata
-            issuerConfigUrl: {
-              title: 'Authorization Server Metadata URL',
-              type: 'string',
-              pattern: '\\/\\.well-known\\/([^\\/]+)',
-              maxLength: 4096
-            }
-          }
-        }
-      }
-    },
+    authorization,
     controller,
     ipAllowList,
     meterId,
@@ -86,6 +89,7 @@ export const updateConfigBody = {
   additionalProperties: false,
   required: ['controller', 'id', 'meterId', 'sequence'],
   properties: {
+    authorization,
     controller,
     id,
     ipAllowList,

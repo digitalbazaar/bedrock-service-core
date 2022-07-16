@@ -6,6 +6,7 @@ import * as helpers from './helpers.js';
 import {agent} from '@bedrock/https-agent';
 import {CapabilityAgent} from '@digitalbazaar/webkms-client';
 import {httpClient} from '@digitalbazaar/http-client';
+import {mockData} from './mock.data.js';
 
 describe('bedrock-service-core HTTP API', () => {
   describe('service objects', () => {
@@ -420,6 +421,131 @@ describe('bedrock-service-core HTTP API', () => {
         assertNoError(err);
         should.exist(result);
         result.should.eql(expectedConfig);
+      });
+      it('updates a config enabling oauth2', async () => {
+        let err;
+        let result;
+        let existingConfig;
+        try {
+          existingConfig = result = await helpers.createConfig(
+            {capabilityAgent});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.have.property('id');
+        result.should.have.property('sequence');
+        result.sequence.should.equal(0);
+        const {id: capabilityAgentId} = capabilityAgent;
+        result.should.have.property('controller');
+        result.controller.should.equal(capabilityAgentId);
+
+        // should fail to retrieve the config since `oauth2` is not yet
+        // enabled
+        const accessToken = await helpers.getOAuth2AccessToken(
+          {configId: existingConfig.id, action: 'read', target: '/'});
+        err = null;
+        result = null;
+        try {
+          result = await helpers.getConfig(
+            {id: existingConfig.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+
+        // this update adds `oauth2` authz config
+        const {baseUri} = bedrock.config.server;
+        let newConfig = {
+          controller: capabilityAgent.id,
+          id: existingConfig.id,
+          meterId: existingConfig.meterId,
+          sequence: 1,
+          authorization: {
+            oauth2: {
+              issuerConfigUrl: `${baseUri}${mockData.oauth2IssuerConfigRoute}`
+            }
+          }
+        };
+        err = null;
+        result = null;
+        try {
+          const url = existingConfig.id;
+          const zcapClient = helpers.createZcapClient({capabilityAgent});
+          result = await zcapClient.write({url, json: newConfig});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result.data);
+        result.status.should.equal(200);
+        result.data.should.have.keys([
+          'id', 'controller', 'sequence', 'meterId', 'authorization'
+        ]);
+        let expectedConfig = {
+          ...existingConfig,
+          ...newConfig
+        };
+        result.data.should.eql(expectedConfig);
+
+        // retrieve the config using `oauth2` to confirm update was effective
+        err = null;
+        result = null;
+        try {
+          result = await helpers.getConfig({id: newConfig.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.eql(expectedConfig);
+
+        // this update removes `oauth2` authz config
+        newConfig = {
+          controller: capabilityAgent.id,
+          id: existingConfig.id,
+          meterId: existingConfig.meterId,
+          sequence: 2
+        };
+        err = null;
+        result = null;
+        try {
+          const url = existingConfig.id;
+          const zcapClient = helpers.createZcapClient({capabilityAgent});
+          result = await zcapClient.write({url, json: newConfig});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result.data);
+        result.status.should.equal(200);
+        result.data.should.have.keys([
+          'id', 'controller', 'sequence', 'meterId'
+        ]);
+        expectedConfig = {
+          ...existingConfig,
+          ...newConfig
+        };
+        result.data.should.eql(expectedConfig);
+
+        // should fail to retrieve the config since `oauth2` is no longer
+        // enabled
+        err = null;
+        result = null;
+        try {
+          result = await helpers.getConfig(
+            {id: existingConfig.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
       });
       it('rejects config update for an invalid zcap', async () => {
         const capabilityAgent2 = await CapabilityAgent.fromSecret(
