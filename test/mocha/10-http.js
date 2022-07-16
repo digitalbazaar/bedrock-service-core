@@ -183,6 +183,161 @@ describe('bedrock-service-core HTTP API', () => {
           ['authorization', 'controller', 'id', 'sequence', 'meterId']);
         result.id.should.equal(config.id);
       });
+      it('fails to get a config w/oauth2 w/expired token', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'read', target: '/',
+          // expired 10 minutes ago
+          exp: Math.floor(Date.now() / 1000 - 600)
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal('ERR_JWT_EXPIRED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('exp');
+      });
+      it('fails to get a config w/oauth2 w/future "nbf" claim', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'read', target: '/',
+          // 10 minutes from now
+          nbf: Math.floor(Date.now() / 1000 + 600)
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal(
+          'ERR_JWT_CLAIM_VALIDATION_FAILED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('nbf');
+      });
+      it('fails to get a config w/oauth2 w/bad "typ" claim', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'read', target: '/',
+          typ: 'unexpected'
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal(
+          'ERR_JWT_CLAIM_VALIDATION_FAILED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('typ');
+      });
+      it('fails to get a config w/oauth2 w/bad "iss" claim', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'read', target: '/',
+          iss: 'urn:example:unexpected'
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal(
+          'ERR_JWT_CLAIM_VALIDATION_FAILED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('iss');
+      });
+      it('fails to get a config w/oauth2 w/bad action', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'write', target: '/'
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal(
+          'ERR_JWT_CLAIM_VALIDATION_FAILED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('scope');
+      });
+      it('fails to get a config w/oauth2 w/bad target', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken({
+          configId: config.id, action: 'read', target: '/foo'
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
+        should.exist(err.data.cause);
+        should.exist(err.data.cause.details);
+        should.exist(err.data.cause.details.code);
+        err.data.cause.details.code.should.equal(
+          'ERR_JWT_CLAIM_VALIDATION_FAILED');
+        should.exist(err.data.cause.details.claim);
+        err.data.cause.details.claim.should.equal('scope');
+      });
     }); // get config
 
     describe('update config', () => {
