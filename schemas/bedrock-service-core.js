@@ -56,6 +56,7 @@ export const config = {
         issuerConfigUrl: {
           title: 'Authorization Server Metadata URL',
           type: 'string',
+          pattern: '\\/\\.well-known\\/([^\\/]+)',
           maxLength: 4096
         }
       }
