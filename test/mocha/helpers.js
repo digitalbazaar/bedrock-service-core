@@ -86,21 +86,18 @@ export async function getConfig({id, capabilityAgent, accessToken}) {
 }
 
 export async function getOAuth2AccessToken({
-  configId, action, target, exp, iat, nbf, typ = 'at+jwt'
+  configId, action, target, exp, iss, nbf, typ = 'at+jwt'
 }) {
   const scope = `${action}:${target}`;
   const builder = new SignJWT({scope})
     .setProtectedHeader({alg: 'EdDSA', typ})
-    .setIssuer(mockData.oauth2Config.issuer)
+    .setIssuer(iss ?? mockData.oauth2Config.issuer)
     .setAudience(configId);
   if(exp !== undefined) {
     builder.setExpirationTime(exp);
   } else {
     // default to 5 minute expiration time
     builder.setExpirationTime('5m');
-  }
-  if(iat !== undefined) {
-    builder.setIssuedAt(iat);
   }
   if(nbf !== undefined) {
     builder.setNotBefore(nbf);
