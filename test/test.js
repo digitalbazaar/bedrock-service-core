@@ -44,10 +44,10 @@ bedrock.events.on('bedrock.init', async () => {
 
 bedrock.events.on('bedrock-express.configure.routes', app => {
   app.get(mockData.oauth2IssuerConfigRoute, (req, res) => {
-    res.send(mockData.openIdConfig);
+    res.json(mockData.oauth2Config);
   });
   app.get('/oauth2/jwks', (req, res) => {
-    res.send(mockData.jwks);
+    res.json(mockData.jwks);
   });
 });
 

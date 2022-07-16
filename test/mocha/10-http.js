@@ -165,6 +165,24 @@ describe('bedrock-service-core HTTP API', () => {
         err.status.should.equal(403);
         err.data.type.should.equal('NotAllowedError');
       });
+      it('gets a config w/oauth2', async () => {
+        const config = await helpers.createConfig(
+          {capabilityAgent, oauth2: true});
+        const accessToken = await helpers.getOAuth2AccessToken(
+          {configId: config.id, action: 'read', target: '/'});
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, accessToken});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.have.keys(
+          ['authorization', 'controller', 'id', 'sequence', 'meterId']);
+        result.id.should.equal(config.id);
+      });
     }); // get config
 
     describe('update config', () => {

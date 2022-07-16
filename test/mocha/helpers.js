@@ -5,6 +5,8 @@ import * as bedrock from '@bedrock/core';
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
 import {getAppIdentity} from '@bedrock/app-identity';
 import {httpsAgent} from '@bedrock/https-agent';
+import {httpClient} from '@digitalbazaar/http-client';
+import {importJWK, SignJWT} from 'jose';
 import {mockData} from './mock.data.js';
 import {ZcapClient} from '@digitalbazaar/ezcap';
 
@@ -35,7 +37,7 @@ export async function createMeter({capabilityAgent} = {}) {
 }
 
 export async function createConfig({
-  capabilityAgent, ipAllowList, meterId
+  capabilityAgent, ipAllowList, meterId, oauth2 = false
 } = {}) {
   if(!meterId) {
     // create a meter for the keystore
@@ -51,6 +53,14 @@ export async function createConfig({
   if(ipAllowList) {
     config.ipAllowList = ipAllowList;
   }
+  if(oauth2) {
+    const {baseUri} = bedrock.config.server;
+    config.authorization = {
+      oauth2: {
+        issuerConfigUrl: `${baseUri}${mockData.oauth2IssuerConfigRoute}`
+      }
+    };
+  }
 
   const zcapClient = createZcapClient({capabilityAgent});
   const url = `${mockData.baseUrl}/examples`;
@@ -58,10 +68,45 @@ export async function createConfig({
   return response.data;
 }
 
-export async function getConfig({id, capabilityAgent}) {
+export async function getConfig({id, capabilityAgent, accessToken}) {
+  if(accessToken) {
+    // do OAuth2
+    const {data} = await httpClient.get(id, {
+      agent: httpsAgent,
+      headers: {
+        authorization: `Bearer ${accessToken}`
+      }
+    });
+    return data;
+  }
+  // do zcap
   const zcapClient = createZcapClient({capabilityAgent});
   const {data} = await zcapClient.read({url: id});
   return data;
+}
+
+export async function getOAuth2AccessToken({
+  configId, action, target, exp, iat, nbf, typ = 'at+jwt'
+}) {
+  const scope = `${action}:${target}`;
+  const builder = new SignJWT({scope})
+    .setProtectedHeader({alg: 'EdDSA', typ})
+    .setIssuer(mockData.oauth2Config.issuer)
+    .setAudience(configId);
+  if(exp !== undefined) {
+    builder.setExpirationTime(exp);
+  } else {
+    // default to 5 minute expiration time
+    builder.setExpirationTime('5m');
+  }
+  if(iat !== undefined) {
+    builder.setIssuedAt(iat);
+  }
+  if(nbf !== undefined) {
+    builder.setNotBefore(nbf);
+  }
+  const key = await importJWK({...mockData.ed25519KeyPair, alg: 'EdDSA'});
+  return builder.sign(key);
 }
 
 export function createZcapClient({

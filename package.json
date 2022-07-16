@@ -48,6 +48,7 @@
     "@bedrock/did-context": "^4.0.0",
     "@bedrock/did-io": "^9.0.1",
     "@bedrock/express": "^8.0.0",
+    "@bedrock/https-agent": "^4.0.0",
     "@bedrock/jsonld-document-loader": "^3.0.0",
     "@bedrock/meter-usage-reporter": "^8.0.0",
     "@bedrock/mongodb": "^10.0.0",
