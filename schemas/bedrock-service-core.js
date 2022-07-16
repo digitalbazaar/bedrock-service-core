@@ -52,12 +52,20 @@ export const config = {
       required: ['oauth2'],
       additionalProperties: false,
       properties: {
-        // `oauth2` URL for authorization server metadata
-        issuerConfigUrl: {
-          title: 'Authorization Server Metadata URL',
-          type: 'string',
-          pattern: '\\/\\.well-known\\/([^\\/]+)',
-          maxLength: 4096
+        oauth2: {
+          title: 'OAuth2 Authorization Configuration',
+          type: 'object',
+          required: ['issuerConfigUrl'],
+          additionalProperties: false,
+          properties: {
+            // `oauth2` URL for authorization server metadata
+            issuerConfigUrl: {
+              title: 'Authorization Server Metadata URL',
+              type: 'string',
+              pattern: '\\/\\.well-known\\/([^\\/]+)',
+              maxLength: 4096
+            }
+          }
         }
       }
     },
