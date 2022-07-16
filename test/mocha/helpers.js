@@ -2,11 +2,11 @@
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
+import {importJWK, SignJWT} from 'jose';
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
 import {getAppIdentity} from '@bedrock/app-identity';
-import {httpsAgent} from '@bedrock/https-agent';
 import {httpClient} from '@digitalbazaar/http-client';
-import {importJWK, SignJWT} from 'jose';
+import {httpsAgent} from '@bedrock/https-agent';
 import {mockData} from './mock.data.js';
 import {ZcapClient} from '@digitalbazaar/ezcap';
 
