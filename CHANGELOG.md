@@ -1,5 +1,15 @@
 # bedrock-service-core ChangeLog
 
+## 6.1.0 - 2022-07-xx
+
+### Added
+- Enable individual service objects to be configured to support
+  OAuth2-based authorization. Adding an
+  `authorization.oauth2.issuerConfigUrl` option with the URL to
+  the OAuth2 authorization server's well-known metadata URL to
+  a service object's config (on creation or via a later update)
+  will enable OAuth2-based authz for that service object.
+
 ## 6.0.0 - 2022-06-30
 
 ### Changed
