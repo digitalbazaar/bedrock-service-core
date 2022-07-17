@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 6.1.2 - 2022-07-xx
+## 6.1.2 - 2022-07-17
 
 ### Fixed
 - Ensure root path in oauth2 scope is treated as full access
