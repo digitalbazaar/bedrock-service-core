@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 6.1.0 - 2022-07-xx
+## 6.1.0 - 2022-07-17
 
 ### Added
 - Enable individual service objects to be configured to support
