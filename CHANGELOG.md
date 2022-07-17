@@ -1,5 +1,10 @@
 # bedrock-service-core ChangeLog
 
+## 6.1.1 - 2022-07-xx
+
+### Fixed
+- Fix typo in oauth2 scope attenuation checker.
+
 ## 6.1.0 - 2022-07-17
 
 ### Added
