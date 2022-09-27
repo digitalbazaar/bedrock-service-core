@@ -1,5 +1,17 @@
 # bedrock-service-core ChangeLog
 
+## 7.0.0 - 2022-09-xx
+
+### Changed
+- Use `@bedrock/oauth2-verifier` to provide oauth2 access token
+  verification.
+- Change `supportedAlgorithms` in oauth2 authorization config to
+  `allowedAlgorithms` to better reflect proper semantics.
+
+### Removed
+- Remove `issuerConfig` from configuration; the same config options
+  are now available via `@bedrock/oauth2-verifier`.
+
 ## 6.1.2 - 2022-07-17
 
 ### Fixed
