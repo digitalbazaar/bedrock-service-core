@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 7.0.0 - 2022-09-xx
+## 7.0.0 - 2022-10-20
 
 ### Changed
 - Use `@bedrock/oauth2-verifier` to provide oauth2 access token
