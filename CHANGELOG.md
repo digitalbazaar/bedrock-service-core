@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 7.0.1 - 2022-10-xx
+
+### Fixed
+- Fix zcap validation; allow non-required zcaps to be added to configs
+  defined by custom services.
+
 ## 7.0.0 - 2022-10-20
 
 ### Changed
