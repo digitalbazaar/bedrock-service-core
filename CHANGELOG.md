@@ -1,5 +1,14 @@
 # bedrock-service-core ChangeLog
 
+## 8.0.0 -
+
+### Changed
+- **BREAKING**: Use `@bedrock/mongodb: ^11` & `@bedrock/zcap-storage: ^9`.
+- **BREAKING**: Use Node MongoDB Driver 4 results API.
+
+### Removed
+- Remove deprecated Mongodb index `background`.
+
 ## 7.0.1 - 2022-10-23
 
 ### Fixed
