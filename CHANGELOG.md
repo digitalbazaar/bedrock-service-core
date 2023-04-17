@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 7.1.0 - 2023-TBD
+## 7.1.0 - 2023-04-17
 
 ### Added
 - Update `validateConfigFn()` error to be thrown as a `BedrockError` so
