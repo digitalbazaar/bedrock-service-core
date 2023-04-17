@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 8.0.0 - 2023-TBD
+
+### Changed
+- **BREAKING**: Update `validateConfigFn()` error to `BedrockError` so that the
+  validation error messages can appear in the top level apps instead of
+  `unspecified error` message.
+
 ## 7.0.1 - 2022-10-23
 
 ### Fixed
