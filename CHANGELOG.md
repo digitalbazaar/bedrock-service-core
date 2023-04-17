@@ -1,11 +1,13 @@
 # bedrock-service-core ChangeLog
 
-## 8.0.0 - 2023-TBD
+## 7.1.0 - 2023-TBD
 
-### Changed
-- **BREAKING**: Update `validateConfigFn()` error to `BedrockError` so that the
-  validation error messages can appear in the top level apps instead of
-  `unspecified error` message.
+### Added
+- Update `validateConfigFn()` error to be thrown as a `BedrockError` so
+  that validation error messages may appear in the top level apps instead
+  of as unspecified `OperationError`s; `OperationError`s are already
+  possible via other error conditions, so this adds a new possible error
+  type for app-specific config validation errors.
 
 ## 7.0.1 - 2022-10-23
 
