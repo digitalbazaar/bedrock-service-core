@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 8.0.0 - 2023-TBD
+## 8.0.0 - 2023-04-18
 
 ### Changed
 - **BREAKING**: Update peer dep `@bedrock/did-io` to v10.
