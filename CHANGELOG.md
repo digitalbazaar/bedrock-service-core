@@ -2,9 +2,8 @@
 
 ## 8.0.0 - 2023-TBD
 
-- **BREAKING**: Update peer dep `@bedrock/did-io` to v10.
-
 ### Changed
+- **BREAKING**: Update peer dep `@bedrock/did-io` to v10.
 
 ## 7.1.0 - 2023-04-17
 
