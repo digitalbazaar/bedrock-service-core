@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 8.0.1 - 2023-05-dd
+
+### Fixed
+- Ensure that `op` is set to `update` in `validateConfigFn` when called
+  during a config update.
+
 ## 8.0.0 - 2023-04-18
 
 ### Changed
