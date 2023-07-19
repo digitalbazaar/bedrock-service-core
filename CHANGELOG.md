@@ -1,5 +1,10 @@
 # bedrock-service-core ChangeLog
 
+## 8.0.2 - 2023-07-dd
+
+### Fixed
+- Fix meter usage aggregator function signature.
+
 ## 8.0.1 - 2023-05-31
 
 ### Fixed
