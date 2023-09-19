@@ -13,6 +13,7 @@
   - Use `@bedrock/oauth2-verifier@2`.
   - Use `@bedrock/security-context@8`.
   - Use `@bedrock/veres-one-context@15`.
+- Update test deps.
 
 ## 8.0.2 - 2023-07-19
 
