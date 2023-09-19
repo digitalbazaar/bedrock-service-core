@@ -4,6 +4,7 @@
 
 ### Changed
 - **BREAKING**: Drop support for Node.js < 18.
+- Use `@digitalbazaar/ed25519-signature-2020@5`.
 - Update peer deps:
   - Use `@bedrock/did-context@5`.
   - Use `@bedrock/jsonld-document-loader@4`.
