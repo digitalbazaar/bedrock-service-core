@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 9.0.0 - 2023-09-xx
+## 9.0.0 - 2023-09-19
 
 ### Changed
 - **BREAKING**: Drop support for Node.js < 18.
