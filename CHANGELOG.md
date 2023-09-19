@@ -1,5 +1,17 @@
 # bedrock-service-core ChangeLog
 
+## 9.0.0 - 2023-09-xx
+
+### Changed
+- **BREAKING**: Drop support for Node.js < 18.
+- Update peer deps:
+  - Use `@bedrock/did-context@5`.
+  - Use `@bedrock/jsonld-document-loader@4`.
+  - Use `@bedrock/meter-usage-reporter@9`.
+  - Use `@bedrock/oauth2-verifier@2`.
+  - Use `@bedrock/security-context@8`.
+  - Use `@bedrock/veres-one-context@15`.
+
 ## 8.0.2 - 2023-07-19
 
 ### Fixed
