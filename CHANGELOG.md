@@ -1,5 +1,13 @@
 # bedrock-service-core ChangeLog
 
+## 9.1.0 - 2024-mm-dd
+
+### Added
+- Pass existing configuration via `existingConfig` to `validateConfigFn`
+  when the `op` is `update`. This feature enables, for example, services
+  to check new configs against the existing config to prevent certain
+  changes or to carry over defaults.
+
 ## 9.0.0 - 2023-09-19
 
 ### Changed
