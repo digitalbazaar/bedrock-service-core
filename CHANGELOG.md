@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 9.1.0 - 2024-mm-dd
+## 9.1.0 - 2024-02-06
 
 ### Added
 - Pass existing configuration via `existingConfig` to `validateConfigFn`
