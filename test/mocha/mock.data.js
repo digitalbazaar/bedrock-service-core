@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2018-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2018-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
 
@@ -9,7 +9,10 @@ export const mockData = {};
 mockData.productIdMap = new Map([
   // example service
   ['example', 'urn:uuid:66aad4d0-8ac1-11ec-856f-10bf48838a41'],
-  ['urn:uuid:66aad4d0-8ac1-11ec-856f-10bf48838a41', 'example']
+  ['urn:uuid:66aad4d0-8ac1-11ec-856f-10bf48838a41', 'example'],
+  // alternative service to test against
+  ['alternative', 'urn:uuid:eb4f9d6f-640c-4ba5-9f2b-adcc22ee1e23'],
+  ['urn:uuid:eb4f9d6f-640c-4ba5-9f2b-adcc22ee1e23', 'alternative']
 ]);
 
 mockData.baseUrl = config.server.baseUri;

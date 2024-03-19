@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
 import {importJWK, SignJWT} from 'jose';
@@ -10,7 +10,9 @@ import {httpsAgent} from '@bedrock/https-agent';
 import {mockData} from './mock.data.js';
 import {ZcapClient} from '@digitalbazaar/ezcap';
 
-export async function createMeter({capabilityAgent} = {}) {
+export async function createMeter({
+  capabilityAgent, serviceName = 'example'
+} = {}) {
   // create signer using the application's capability invocation key
   const {keys: {capabilityInvocationKey}} = getAppIdentity();
 
@@ -25,8 +27,8 @@ export async function createMeter({capabilityAgent} = {}) {
   let meter = {
     controller: capabilityAgent.id,
     product: {
-      // mock ID for example service product
-      id: mockData.productIdMap.get('example')
+      // mock ID for service product
+      id: mockData.productIdMap.get(serviceName)
     }
   };
   ({data: {meter}} = await zcapClient.write({url: meterService, json: meter}));
