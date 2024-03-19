@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
 import {fileURLToPath} from 'node:url';
@@ -26,4 +26,11 @@ config['app-identity'].seeds.services.example = {
   id: 'did:key:z6MkrH839XwPCUQ2TkA6ifehciWnEvzuQ2njc6J19fpuP5oN',
   seedMultibase: 'z1AgvAGfbairK3AV6GqbeF8gSpYZXftQsGb5DTjptgawNyn',
   serviceType: 'example'
+};
+
+// create alternative application identity for another service
+config['app-identity'].seeds.services.alternative = {
+  id: 'did:key:z6MksEXGf7AirMp1CGKAcPdHkc44jQosSMTZRzXhh34t2M1t',
+  seedMultibase: 'z1Af3wGuY39s1F1VyizUjfnjaBVw3esZWtbcD37RTmEsb4B',
+  serviceType: 'alternative'
 };

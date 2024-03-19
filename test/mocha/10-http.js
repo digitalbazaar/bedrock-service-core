@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
 import * as helpers from './helpers.js';
@@ -33,6 +33,48 @@ describe('bedrock-service-core HTTP API', () => {
         result.sequence.should.equal(0);
         const {id: capabilityAgentId} = capabilityAgent;
         result.controller.should.equal(capabilityAgentId);
+      });
+      it('fails to create w/incorrect service meter zcap', async () => {
+        let err;
+        let result;
+        try {
+          // create meter for alternative service
+          const {id: meterId} = await helpers.createMeter({
+            capabilityAgent, serviceName: 'alternative'
+          });
+          result = await helpers.createConfig({capabilityAgent, meterId});
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.name.should.equal('NotAllowedError');
+        err.data.cause.name.should.equal('NotAllowedError');
+        err.data.cause.cause.message.should.include('The capability');
+      });
+      it('fails to create w/incorrect zcap for meter', async () => {
+        let err;
+        let result;
+        try {
+          const secret = 'e73c287f-c279-460a-9198-2c3e61d75a15';
+          const handle = 'test';
+          const otherCapabilityAgent = await CapabilityAgent.fromSecret({
+            secret, handle
+          });
+          const {id: meterId} = await helpers.createMeter({
+            capabilityAgent: otherCapabilityAgent
+          });
+          result = await helpers.createConfig({
+            capabilityAgent, meterId
+          });
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(403);
+        err.data.type.should.equal('NotAllowedError');
       });
       it('creates a config including proper ipAllowList', async () => {
         const ipAllowList = ['127.0.0.1/32', '::1/128'];
