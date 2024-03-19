@@ -1,5 +1,10 @@
 # bedrock-service-core ChangeLog
 
+## 9.2.0 - 2024-mm-dd
+
+### Added
+- Surface meter usage check errors during service instance creation.
+
 ## 9.1.0 - 2024-02-06
 
 ### Added
