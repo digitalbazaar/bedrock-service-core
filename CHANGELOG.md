@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 9.3.0 - 2024-mm-dd
+## 9.3.0 - 2024-05-20
 
 ### Added
 - Allow service object config IDs to be provided by a client if the
