@@ -39,10 +39,11 @@ export async function createMeter({
 }
 
 export async function createConfig({
-  capabilityAgent, ipAllowList, meterId, oauth2 = false
+  capabilityAgent, ipAllowList, meterId, oauth2 = false, options = {},
+  servicePath = '/examples'
 } = {}) {
   if(!meterId) {
-    // create a meter for the keystore
+    // create a meter for the config
     ({id: meterId} = await createMeter({capabilityAgent}));
   }
 
@@ -50,7 +51,8 @@ export async function createConfig({
   const config = {
     sequence: 0,
     controller: capabilityAgent.id,
-    meterId
+    meterId,
+    ...options
   };
   if(ipAllowList) {
     config.ipAllowList = ipAllowList;
@@ -65,7 +67,7 @@ export async function createConfig({
   }
 
   const zcapClient = createZcapClient({capabilityAgent});
-  const url = `${mockData.baseUrl}/examples`;
+  const url = `${mockData.baseUrl}${servicePath}`;
   const response = await zcapClient.write({url, json: config});
   return response.data;
 }

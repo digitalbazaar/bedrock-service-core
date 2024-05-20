@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 9.3.0 - 2024-mm-dd
+
+### Added
+- Allow service object config IDs to be provided by a client if the
+  extending service code overrides the default validation schema;
+  by default, this is still prohibited.
+
 ## 9.2.0 - 2024-03-19
 
 ### Added
