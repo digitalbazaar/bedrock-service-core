@@ -34,6 +34,28 @@ describe('bedrock-service-core HTTP API', () => {
         const {id: capabilityAgentId} = capabilityAgent;
         result.controller.should.equal(capabilityAgentId);
       });
+      it('fails to create w/client-provided config ID', async () => {
+        let err;
+        let result;
+        try {
+          // create meter for example service
+          const {id: meterId} = await helpers.createMeter({
+            capabilityAgent, serviceName: 'example'
+          });
+          result = await helpers.createConfig({
+            capabilityAgent, meterId, options: {id: 'should-fail'}
+          });
+        } catch(e) {
+          err = e;
+        }
+        should.exist(err);
+        should.not.exist(result);
+        err.status.should.equal(400);
+        err.data.details.errors.should.have.length(1);
+        const [error] = err.data.details.errors;
+        error.name.should.equal('ValidationError');
+        error.message.should.contain('should NOT have additional properties');
+      });
       it('fails to create w/incorrect service meter zcap', async () => {
         let err;
         let result;
@@ -152,6 +174,32 @@ describe('bedrock-service-core HTTP API', () => {
         err.data.type.should.equal('ValidationError');
         err.data.message.should.equal(
           'A validation error occured in the \'createConfigBody\' validator.');
+      });
+      it('creates a config with a client ID', async () => {
+        let err;
+        let result;
+        try {
+          const {id: meterId} = await helpers.createMeter({
+            capabilityAgent, serviceName: 'alternative'
+          });
+
+          result = await helpers.createConfig({
+            capabilityAgent, meterId, servicePath: '/alternatives',
+            options: {
+              id: `${mockData.baseUrl}/alternatives/foo`
+            }
+          });
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.have.keys([
+          'controller', 'id', 'sequence', 'meterId'
+        ]);
+        result.sequence.should.equal(0);
+        const {id: capabilityAgentId} = capabilityAgent;
+        result.controller.should.equal(capabilityAgentId);
       });
     });
 

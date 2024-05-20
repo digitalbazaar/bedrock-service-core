@@ -1,10 +1,11 @@
 /*!
- * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
-import {createService} from '@bedrock/service-core';
+import {createService, schemas} from '@bedrock/service-core';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import {handlers} from '@bedrock/meter-http';
+import {klona} from 'klona';
 import {mockData} from './mocha/mock.data.js';
 import '@bedrock/https-agent';
 import '@bedrock/meter';
@@ -38,6 +39,22 @@ bedrock.events.on('bedrock.init', async () => {
     storageCost: {
       config: 1,
       revocation: 1
+    }
+  });
+
+  // create `alternative` service that allows the client to provide IDs
+  const alternativeCreateConfigBody = klona(schemas.createConfigBody);
+  alternativeCreateConfigBody.properties.id =
+    schemas.updateConfigBody.properties.id;
+  await createService({
+    serviceType: 'alternative',
+    routePrefix: '/alternatives',
+    storageCost: {
+      config: 1,
+      revocation: 1
+    },
+    validation: {
+      createConfigBody: alternativeCreateConfigBody
     }
   });
 });
