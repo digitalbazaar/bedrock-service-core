@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 9.4.0 - 2024-mm-dd
+
+### Changed
+- Use `@digitalbazaar/ed25519-multikey` to resolve ed25519 verification methods.
+  No changes to deployments are expected.
+
 ## 9.3.0 - 2024-05-20
 
 ### Added
