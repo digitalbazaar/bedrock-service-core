@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 10.0.0 - 2024-08-xx
+## 10.0.0 - 2024-08-01
 
 ### Changed
 - **BREAKING**: Update peer dependencies:
