@@ -1,5 +1,14 @@
 # bedrock-service-core ChangeLog
 
+## 10.0.0 - 2024-08-xx
+
+### Changed
+- **BREAKING**: Update peer dependencies:
+  - `@bedrock/did-context@6`
+  - `@bedrock/jsonld-document-loader@5.1.0`
+  - `@bedrock/security-context@9`
+  - `@bedrock/veres-one-context@16`
+
 ## 9.4.0 - 2024-06-15
 
 ### Changed
