@@ -8,6 +8,8 @@
   - `@bedrock/jsonld-document-loader@5.1.0`
   - `@bedrock/security-context@9`
   - `@bedrock/veres-one-context@16`
+- Update minor dependencies.
+- Update test dependencies.
 
 ## 9.4.0 - 2024-06-15
 
