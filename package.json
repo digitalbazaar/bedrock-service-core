@@ -9,7 +9,7 @@
     "schemas/**/*.js"
   ],
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint --ext .cjs,.js ."
   },
   "repository": {
     "type": "git",
@@ -58,10 +58,10 @@
     "lib": "./lib"
   },
   "devDependencies": {
-    "eslint": "^8.18.0",
-    "eslint-config-digitalbazaar": "^5.0.1",
-    "eslint-plugin-jsdoc": "^48.2.1",
-    "eslint-plugin-unicorn": "^51.0.1",
+    "eslint": "^8.57.0",
+    "eslint-config-digitalbazaar": "^5.2.0",
+    "eslint-plugin-jsdoc": "^48.10.2",
+    "eslint-plugin-unicorn": "^55.0.0",
     "jsdoc": "^4.0.2",
     "jsdoc-to-markdown": "^8.0.0"
   },
