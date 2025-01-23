@@ -1,9 +1,9 @@
 # bedrock-service-core ChangeLog
 
-## 10.0.1 - 2025-mm-dd
+## 10.1.0 - 2025-01-23
 
 ### Changed
-- Use `@bedrock/oauth2-verifier` to get `checkTargetScopedAccessToken()`
+- Use `@bedrock/oauth2-verifier@2.2.0` to get `checkTargetScopedAccessToken()`
   feature for verifying oauth2 access tokens.
 
 ## 10.0.0 - 2024-08-01
