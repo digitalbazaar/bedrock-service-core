@@ -48,7 +48,7 @@
     "@bedrock/jsonld-document-loader": "^5.1.0",
     "@bedrock/meter-usage-reporter": "^9.0.1",
     "@bedrock/mongodb": "^10.2.0",
-    "@bedrock/oauth2-verifier": "^2.1.0",
+    "@bedrock/oauth2-verifier": "^2.2.0",
     "@bedrock/security-context": "^9.0.0",
     "@bedrock/validation": "^7.1.0",
     "@bedrock/veres-one-context": "^16.0.0",
