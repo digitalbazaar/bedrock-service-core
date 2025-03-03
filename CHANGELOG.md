@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 10.1.1 - 2025-mm-dd
+
+### Fixed
+- Return passed `record` instead of resulting record from mongodb calls to
+  enable using newer mongodb driver.
+
 ## 10.1.0 - 2025-01-23
 
 ### Changed
