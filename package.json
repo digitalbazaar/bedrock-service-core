@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/service-core",
-  "version": "10.1.1",
+  "version": "10.1.2-0",
   "type": "module",
   "description": "Bedrock Service Core",
   "main": "./lib/index.js",
