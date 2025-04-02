@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2019-2024 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
 import * as helpers from './helpers.js';
@@ -200,6 +200,30 @@ describe('bedrock-service-core HTTP API', () => {
         result.sequence.should.equal(0);
         const {id: capabilityAgentId} = capabilityAgent;
         result.controller.should.equal(capabilityAgentId);
+      });
+      it('tests underlying instance usage tracking', async () => {
+        let err;
+        let result;
+        let configId;
+        try {
+          const {id: meterId} = await helpers.createMeter({
+            capabilityAgent, serviceName: 'alternative'
+          });
+
+          ({id: configId} = await helpers.createConfig({
+            capabilityAgent, meterId, servicePath: '/alternatives'
+          }));
+
+          const url = `${bedrock.config.server.baseUri}/test-get-usage`;
+          result = await httpClient.post(url, {agent, json: {meterId}});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.data.should.have.keys(['usage', 'configIds']);
+        result.data.configIds.should.include(configId);
+        result.data.usage.storage.should.be.above(100);
       });
     });
 
