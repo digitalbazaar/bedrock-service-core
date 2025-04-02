@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 11.1.0 - 2025-mm-dd
+
+### Added
+- Add custom option `addUsage()` function to pass to `ConfigStorage.getUsage()`
+  that allows custom aggregation of usage stats based on a particular config
+  instance.
+
 ## 11.0.0 - 2025-03-08
 
 ### Changed

@@ -1,8 +1,9 @@
 /*!
- * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2022-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as bedrock from '@bedrock/core';
 import {createService, schemas} from '@bedrock/service-core';
+import {asyncHandler} from '@bedrock/express';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import {handlers} from '@bedrock/meter-http';
 import {klona} from 'klona';
@@ -46,7 +47,7 @@ bedrock.events.on('bedrock.init', async () => {
   const alternativeCreateConfigBody = klona(schemas.createConfigBody);
   alternativeCreateConfigBody.properties.id =
     schemas.updateConfigBody.properties.id;
-  await createService({
+  const alternativeService = await createService({
     serviceType: 'alternative',
     routePrefix: '/alternatives',
     storageCost: {
@@ -56,6 +57,22 @@ bedrock.events.on('bedrock.init', async () => {
     validation: {
       createConfigBody: alternativeCreateConfigBody
     }
+  });
+
+  bedrock.events.on('bedrock-express.configure.routes', app => {
+    app.post('/test-get-usage', asyncHandler(async (req, res) => {
+      const {meterId} = req.body;
+      const configIds = [];
+      const usage = await alternativeService.configStorage.getUsage({
+        meterId,
+        signal: new AbortController().signal,
+        async addUsage({config, usage}) {
+          usage.storage += 100;
+          configIds.push(config.id);
+        }
+      });
+      res.json({usage, configIds});
+    }));
   });
 });
 
