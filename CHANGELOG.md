@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 11.1.1 - 2025-04-dd
+
+### Changed
+- Updated dependencies.
+- Support only node 20+.
+
 ## 11.1.0 - 2025-04-02
 
 ### Added

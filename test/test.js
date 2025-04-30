@@ -6,7 +6,6 @@ import {createService, schemas} from '@bedrock/service-core';
 import {asyncHandler} from '@bedrock/express';
 import {getServiceIdentities} from '@bedrock/app-identity';
 import {handlers} from '@bedrock/meter-http';
-import {klona} from 'klona';
 import {mockData} from './mocha/mock.data.js';
 import '@bedrock/https-agent';
 import '@bedrock/meter';
@@ -44,7 +43,7 @@ bedrock.events.on('bedrock.init', async () => {
   });
 
   // create `alternative` service that allows the client to provide IDs
-  const alternativeCreateConfigBody = klona(schemas.createConfigBody);
+  const alternativeCreateConfigBody = structuredClone(schemas.createConfigBody);
   alternativeCreateConfigBody.properties.id =
     schemas.updateConfigBody.properties.id;
   const alternativeService = await createService({
