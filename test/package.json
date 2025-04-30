@@ -36,7 +36,7 @@
     "@digitalbazaar/webkms-client": "^14.1.2",
     "c8": "^10.1.3",
     "cross-env": "^7.0.3",
-    "jose": "^4.8.3"
+    "jose": "^6.0.10"
   },
   "c8": {
     "excludeNodeModules": false,
