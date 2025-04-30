@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.1.1 - 2025-04-dd
+## 11.1.1 - 2025-04-30
 
 ### Changed
 - Updated dependencies.
