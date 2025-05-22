@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.2.0 - 2025-05-dd
+## 11.2.0 - 2025-05-22
 
 ### Changed
 - Use `@digitalbazaar/lru-memoize@4`. Existing cache defaults and options
