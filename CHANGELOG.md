@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 11.2.1 - 2025-mm-dd
+
+### Fixed
+- Ensure specified zcap reference IDs are merged into any existing zcap
+  schema when creating a service (instead of overwriting that existing
+  schema).
+
 ## 11.2.0 - 2025-05-22
 
 ### Changed
