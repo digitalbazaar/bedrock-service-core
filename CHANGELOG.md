@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.2.1 - 2025-mm-dd
+## 11.2.1 - 2025-08-24
 
 ### Fixed
 - Ensure specified zcap reference IDs are merged into any existing zcap
