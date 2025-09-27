@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 11.3.0 - 2025-mm-dd
+
+### Changed
+- Update peer dependencies:
+  - `@bedrock/zcap-storage@9.3`.
+
 ## 11.2.1 - 2025-08-24
 
 ### Fixed
