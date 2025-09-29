@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.3.0 - 2025-mm-dd
+## 11.3.0 - 2025-09-28
 
 ### Changed
 - Update peer dependencies:
