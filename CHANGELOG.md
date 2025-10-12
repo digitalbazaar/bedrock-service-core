@@ -1,5 +1,20 @@
 # bedrock-service-core ChangeLog
 
+## 11.4.0 - 2025-mm-dd
+
+### Added
+- Add optional `refreshHandler({record})` feature to `ConfigStorage`. If a
+  `refreshHandler` function is passed when constructing a `ConfigStorage`
+  instance, then the instance will auto-schedule a refresh job that will run
+  based on the `bedrock.config['service-core'].configStorage.refresh.interval`
+  configuration option. When the refresh job runs, it will look for config
+  records that are marked as refreshable (`meta.refresh.enabled = true`) and
+  with a `meta.refresh.after` timestamp in the past. Such records will be
+  passed (one at a time) to the `refreshHandler` for refresh. The function
+  must attempt to update these config records according to the associated
+  services requirements and set the `meta.refresh.after` property to a
+  an appropriate timestamp in the future.
+
 ## 11.3.0 - 2025-09-28
 
 ### Changed
