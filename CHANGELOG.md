@@ -3,8 +3,8 @@
 ## 11.4.0 - 2025-mm-dd
 
 ### Added
-- Add optional `refreshHandler({record})` feature to `ConfigStorage`. If a
-  `refreshHandler` function is passed when constructing a `ConfigStorage`
+- Add optional `refreshHandler({record, signal})` feature to `ConfigStorage`.
+  If a `refreshHandler` function is passed when constructing a `ConfigStorage`
   instance, then the instance will auto-schedule a refresh job that will run
   based on the `bedrock.config['service-core'].configStorage.refresh.interval`
   configuration option. When the refresh job runs, it will look for config
