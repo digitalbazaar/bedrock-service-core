@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2022-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
 import {fileURLToPath} from 'node:url';
@@ -34,3 +34,13 @@ config['app-identity'].seeds.services.alternative = {
   seedMultibase: 'z1Af3wGuY39s1F1VyizUjfnjaBVw3esZWtbcD37RTmEsb4B',
   serviceType: 'alternative'
 };
+
+// create application identity for service with refresh
+config['app-identity'].seeds.services.refreshing = {
+  id: 'did:key:z6MkqhgbwggDuoHeru2GSDmZN6V2oPs1vHZoXhEVJnKpDzEz',
+  seedMultibase: 'z1AnLvp9wWsUe9YkGoQpvLikA1GjtuduvQGwgptu5va2mKS',
+  serviceType: 'refreshing'
+};
+
+// set config storage refresh interval short for testing purposes
+config['service-core'].configStorage.refresh.interval = 100;
