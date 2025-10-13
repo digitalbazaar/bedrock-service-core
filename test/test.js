@@ -43,8 +43,9 @@ bedrock.events.on('bedrock.init', async () => {
   });
 
   // create `alternative` service that allows the client to provide IDs
-  const alternativeCreateConfigBody = structuredClone(schemas.createConfigBody);
-  alternativeCreateConfigBody.properties.id =
+  const allowClientIdCreateConfigBody = structuredClone(
+    schemas.createConfigBody);
+  allowClientIdCreateConfigBody.properties.id =
     schemas.updateConfigBody.properties.id;
   const alternativeService = await createService({
     serviceType: 'alternative',
@@ -54,7 +55,24 @@ bedrock.events.on('bedrock.init', async () => {
       revocation: 1
     },
     validation: {
-      createConfigBody: alternativeCreateConfigBody
+      createConfigBody: allowClientIdCreateConfigBody
+    }
+  });
+
+  // create `refreshing` service with a refresh handler
+  mockData.refreshingService = await createService({
+    serviceType: 'refreshing',
+    routePrefix: '/refreshables',
+    storageCost: {
+      config: 1,
+      revocation: 1
+    },
+    validation: {
+      createConfigBody: allowClientIdCreateConfigBody
+    },
+    async refreshHandler({record}) {
+      const fn = mockData.refreshHandlerListeners.get(record.config.id);
+      await fn?.({record});
     }
   });
 

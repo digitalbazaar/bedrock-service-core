@@ -1,9 +1,12 @@
 /*!
- * Copyright (c) 2018-2024 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2018-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
 
 export const mockData = {};
+
+// functions used in tests
+mockData.refreshHandlerListeners = new Map();
 
 // mock product IDs and reverse lookup for service products
 mockData.productIdMap = new Map([
@@ -12,7 +15,10 @@ mockData.productIdMap = new Map([
   ['urn:uuid:66aad4d0-8ac1-11ec-856f-10bf48838a41', 'example'],
   // alternative service to test against
   ['alternative', 'urn:uuid:eb4f9d6f-640c-4ba5-9f2b-adcc22ee1e23'],
-  ['urn:uuid:eb4f9d6f-640c-4ba5-9f2b-adcc22ee1e23', 'alternative']
+  ['urn:uuid:eb4f9d6f-640c-4ba5-9f2b-adcc22ee1e23', 'alternative'],
+  // refreshing service for testing refresh feature
+  ['refreshing', 'urn:uuid:c48900f6-cb4f-4c7e-bbd6-afdc2cc4b070'],
+  ['urn:uuid:c48900f6-cb4f-4c7e-bbd6-afdc2cc4b070', 'refreshing']
 ]);
 
 mockData.baseUrl = config.server.baseUri;
