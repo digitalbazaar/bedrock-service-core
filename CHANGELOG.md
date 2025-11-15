@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.4.0 - 2025-mm-dd
+## 11.4.0 - 2025-11-15
 
 ### Added
 - Add optional `refreshHandler({record, signal})` feature to `ConfigStorage`.
