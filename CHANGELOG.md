@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 11.5.0 - 2026-01-dd
+
+### Added
+- Add configuration `zcapExpiration` for logging structured details
+  if presented zcaps are expired or near expiration, to improve service
+  observability.
+
 ## 11.4.0 - 2025-11-15
 
 ### Added
