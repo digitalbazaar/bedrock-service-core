@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.5.0 - 2026-mm-dd
+## 11.5.0 - 2026-04-02
 
 ### Added
 - Add optional `name` field to configs.
