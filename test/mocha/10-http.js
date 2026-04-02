@@ -34,6 +34,25 @@ describe('bedrock-service-core HTTP API', () => {
         const {id: capabilityAgentId} = capabilityAgent;
         result.controller.should.equal(capabilityAgentId);
       });
+      it('creates a config with a name', async () => {
+        let err;
+        let result;
+        try {
+          result = await helpers.createConfig({
+            capabilityAgent, options: {name: 'my-config-name'}
+          });
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.have.keys([
+          'controller', 'id', 'sequence', 'meterId', 'name'
+        ]);
+        result.sequence.should.equal(0);
+        const {id: capabilityAgentId} = capabilityAgent;
+        result.controller.should.equal(capabilityAgentId);
+      });
       it('fails to create w/client-provided config ID', async () => {
         let err;
         let result;
@@ -241,6 +260,24 @@ describe('bedrock-service-core HTTP API', () => {
         should.exist(result);
         result.should.have.keys(['controller', 'id', 'sequence', 'meterId']);
         result.id.should.equal(config.id);
+      });
+      it('gets a config that has a name', async () => {
+        const config = await helpers.createConfig({
+          capabilityAgent, options: {name: 'some name'}
+        });
+        let err;
+        let result;
+        try {
+          result = await helpers.getConfig({id: config.id, capabilityAgent});
+        } catch(e) {
+          err = e;
+        }
+        assertNoError(err);
+        should.exist(result);
+        result.should.have.keys(
+          ['controller', 'id', 'sequence', 'meterId', 'name']);
+        result.id.should.equal(config.id);
+        result.name.should.equal('some name');
       });
       it('gets a config with ipAllowList', async () => {
         const ipAllowList = ['127.0.0.1/32', '::1/128'];
