@@ -57,6 +57,12 @@ const meterId = {
   maxLength: 4096
 };
 
+const configName = {
+  title: 'Config Name',
+  type: 'string',
+  maxLength: 1000
+};
+
 const sequence = {
   title: 'sequence',
   type: 'integer',
@@ -75,6 +81,7 @@ export const config = {
     controller,
     ipAllowList,
     meterId,
+    name: configName,
     sequence
   }
 };
@@ -94,6 +101,7 @@ export const updateConfigBody = {
     id,
     ipAllowList,
     meterId,
+    name: configName,
     sequence
   }
 };
