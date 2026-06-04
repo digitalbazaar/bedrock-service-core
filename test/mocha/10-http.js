@@ -73,7 +73,7 @@ describe('bedrock-service-core HTTP API', () => {
         err.data.details.errors.should.have.length(1);
         const [error] = err.data.details.errors;
         error.name.should.equal('ValidationError');
-        error.message.should.contain('should NOT have additional properties');
+        error.message.should.contain('NOT have additional properties');
       });
       it('fails to create w/incorrect service meter zcap', async () => {
         let err;
@@ -153,7 +153,7 @@ describe('bedrock-service-core HTTP API', () => {
         err.data.details.errors.should.have.length(1);
         const [error] = err.data.details.errors;
         error.name.should.equal('ValidationError');
-        error.message.should.contain('should match pattern');
+        error.message.should.contain('match pattern');
         error.details.path.should.equal('.ipAllowList[0]');
       });
       it('throws error on invalid ipAllowList', async () => {
@@ -172,7 +172,7 @@ describe('bedrock-service-core HTTP API', () => {
         err.data.details.errors.should.have.length(1);
         const [error] = err.data.details.errors;
         error.name.should.equal('ValidationError');
-        error.message.should.contain('should NOT have fewer than 1 items');
+        error.message.should.contain('NOT have fewer than 1 items');
         error.details.path.should.equal('.ipAllowList');
       });
       it('throws error on no "sequence"', async () => {
