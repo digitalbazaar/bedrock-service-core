@@ -819,7 +819,7 @@ describe('bedrock-service-core HTTP API', () => {
             id: url,
             ipAllowList,
             meterId: existingConfig.meterId,
-            sequence: 1,
+            sequence: 1
           };
 
           err = null;
@@ -899,7 +899,7 @@ describe('bedrock-service-core HTTP API', () => {
             id: url,
             ipAllowList,
             meterId: result.meterId,
-            sequence: 1,
+            sequence: 1
           };
 
           err = null;
