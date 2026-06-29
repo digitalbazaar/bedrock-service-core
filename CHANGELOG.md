@@ -1,5 +1,20 @@
 # bedrock-service-core ChangeLog
 
+## 11.6.0 - 2026-mm-dd
+
+### Changed
+- Update dependencies:
+  - `@digitalbazaar/ezcap-express@^7.2.0`
+  - `cidr-regex@^6.0.0`
+  - `cors@^2.8.6`
+  - `delay@^7.0.0`
+  - `ipaddr.js@^2.4.0`.
+- Update peer dependencies:
+  - `@bedrock/did-io@^10.5.0`
+  - `@bedrock/express@^8.7.0`
+  - `@bedrock/mongodb@^11.0.1`
+  - `@bedrock/zcap-storage@^9.7.0`.
+
 ## 11.5.0 - 2026-04-02
 
 ### Added
