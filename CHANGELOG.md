@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.6.0 - 2026-mm-dd
+## 11.6.0 - 2026-06-30
 
 ### Changed
 - Update dependencies:
