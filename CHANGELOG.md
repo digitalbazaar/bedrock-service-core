@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 11.7.0 - 2026-mm-dd
+
+### Added
+- Enable passing `operations` and `storage` to `reportOperationUsage()` in
+  `metering` APIs.
+- Report new config storage resource use w/metering system.
+
 ## 11.6.0 - 2026-06-30
 
 ### Changed
