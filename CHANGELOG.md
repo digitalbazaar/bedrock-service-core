@@ -1,6 +1,6 @@
 # bedrock-service-core ChangeLog
 
-## 11.7.0 - 2026-mm-dd
+## 11.7.0 - 2026-11-06
 
 ### Added
 - Enable passing `operations` and `storage` to `reportOperationUsage()` in
