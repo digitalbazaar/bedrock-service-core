@@ -1,5 +1,10 @@
 # bedrock-service-core ChangeLog
 
+## 11.7.1 - 2026-11-dd
+
+### Fixed
+- Fix config creation meter reporting bug.
+
 ## 11.7.0 - 2026-11-06
 
 ### Added
