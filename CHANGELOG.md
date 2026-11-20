@@ -1,5 +1,12 @@
 # bedrock-service-core ChangeLog
 
+## 11.7.2 - 2026-mm-dd
+
+### Changed
+- Update dependencies:
+  - `@digitalbazaar/ezcap-express@^7.3.1`
+  - `ipaddr.js@^2.5.0`.
+
 ## 11.7.1 - 2026-11-09
 
 ### Fixed
