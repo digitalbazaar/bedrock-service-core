@@ -1,5 +1,11 @@
 # bedrock-service-core ChangeLog
 
+## 11.7.3 - 2026-11-dd
+
+### Changed
+- Update dependencies:
+  - `@digitalbazaar/ezcap-express@^7.3.2`.
+
 ## 11.7.2 - 2026-11-20
 
 ### Changed
